@@ -67,7 +67,11 @@ public class UiManager : MonoBehaviour
         if (buttonPressed)
         {
             OnMenu();
-            panelBlockRaycast.SetActive(buttonPressed);
+            if (panelBlockRaycast)
+            {
+                panelBlockRaycast.SetActive(buttonPressed);
+                Debug.Log(buttonPressed ? "RaycastBlocked." : "Raycast Unblocked.");
+            }
         }
     }
 
