@@ -310,7 +310,6 @@ GameObject:
   - component: {fileID: 439094454}
   - component: {fileID: 439094453}
   - component: {fileID: 439094452}
-  - component: {fileID: 439094451}
   m_Layer: 0
   m_Name: EnemySpawnerUp0
   m_TagString: Untagged
@@ -318,19 +317,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &439094451
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439094450}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &439094452
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -403,7 +389,6 @@ GameObject:
   - component: {fileID: 440602046}
   - component: {fileID: 440602045}
   - component: {fileID: 440602044}
-  - component: {fileID: 440602043}
   m_Layer: 0
   m_Name: EnemySpawnerRight2
   m_TagString: Untagged
@@ -411,19 +396,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &440602043
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 440602042}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &440602044
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1668,7 +1640,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185985682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.308749, y: 19.687027, z: -67.19148}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1703,13 +1675,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619cc97646363cc46939ebd1fa610815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onDebug: 1
   pfEnemy: {fileID: 5982524730973864494, guid: 94f655c77813fca429652baffe86aeac, type: 3}
   pfPlayer: {fileID: 7399381302664369120, guid: 9758f37abf4df304bac7a013fddc53ab,
     type: 3}
   spawners:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 439094450}
+  - {fileID: 1612521506}
+  - {fileID: 440602042}
+  enemiesGroup: {fileID: 1185985683}
 --- !u!4 &1407289830
 Transform:
   m_ObjectHideFlags: 0
@@ -1808,7 +1782,6 @@ GameObject:
   - component: {fileID: 1612521510}
   - component: {fileID: 1612521509}
   - component: {fileID: 1612521508}
-  - component: {fileID: 1612521507}
   m_Layer: 0
   m_Name: EnemySpawnerLeft1
   m_TagString: Untagged
@@ -1816,19 +1789,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1612521507
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1612521506}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1612521508
 MeshRenderer:
   m_ObjectHideFlags: 0
