@@ -70,14 +70,14 @@ public class UiManager : MonoBehaviour
             if (panelBlockRaycast)
             {
                 panelBlockRaycast.SetActive(buttonPressed);
-                Debug.Log(buttonPressed ? "RaycastBlocked." : "Raycast Unblocked.");
+                if (debug) Debug.Log(buttonPressed ? "RaycastBlocked." : "Raycast Unblocked.");
             }
         }
     }
 
     public void ButtonPressed(int _currentMenu)
     {
-        if (debug) Debug.Log("Cambio a Panel: " + menues[_currentMenu]);
+        if (debug) Debug.Log("Cambio a Panel: " + menu[_currentMenu]);
         buttonPressed = true;
         currentMenu = _currentMenu;
 
@@ -174,7 +174,7 @@ public class UiManager : MonoBehaviour
             }
         }
     }
-
+    
     public void ChangeScene(string nameScene)
     {
         SceneManager.LoadScene(nameScene);
