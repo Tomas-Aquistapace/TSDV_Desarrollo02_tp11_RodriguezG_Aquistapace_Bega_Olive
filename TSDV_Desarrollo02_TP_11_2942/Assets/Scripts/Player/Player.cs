@@ -17,6 +17,7 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
     [Header("Values of player")]
     [SerializeField]
     private float speedMovement;
+    public int maxEnergy = 100;
     public int energy = 100;
     public int speedEnergyDrops = 2;
     public bool isDead = false;
@@ -61,6 +62,12 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
             if(rocketLauncher.activeSelf == true) { rocketLauncher.GetComponent<IcanShoot>().ShootGun(); }
             if(railgun.activeSelf == true) { railgun.GetComponent<IcanShoot>().ShootGun(); }
         }
+    }
+
+    public void RestoreEnergy(int amount)
+    {
+        energy += amount;
+        if (energy > maxEnergy) { energy = maxEnergy; }
     }
 
     public void TakeDamage(int damage)
