@@ -34,9 +34,7 @@ public class UiNameAnimation : MonoBehaviour
         if (enable)
         {
             onTime += Time.deltaTime / timePerText;
-            Debug.Log("onTime: " + onTime);
             float scaleAux = Mathf.Lerp(initialScale, 1, onTime);
-            Debug.Log("scaleAux: " + scaleAux);
             rTransform.localScale = new Vector3(scaleAux, scaleAux, scaleAux);
 
             if (scaleAux < 1.002f)
