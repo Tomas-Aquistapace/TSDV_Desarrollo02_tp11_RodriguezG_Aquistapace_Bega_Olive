@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.tag == "Enemy")
+        if (collision.transform.tag == "Enemy")
         {
             collision.GetComponent<ItakeDamage>().TakeDamage(damage);
 

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Limits of enemy")]
@@ -7,7 +6,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float leftEdge;
     [SerializeField] public float topEdge;
     [SerializeField] public float downEdge;
-
     public void SetEnemy(LevelGenerator.EnemyType enemyType)
     {
         switch (enemyType)
@@ -16,7 +14,6 @@ public class Enemy : MonoBehaviour
                 gameObject.AddComponent<Enemy01>();
                 break;
             case LevelGenerator.EnemyType.Normal:
-                //gameObject.AddComponent<Enemy02>();
                 break;
         }
     }
