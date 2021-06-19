@@ -87,7 +87,7 @@ public class LevelGenerator : MonoBehaviour
     {
         if (onDebug) Debug.Log("Enemigo en: " + pos);
         GameObject enemy = Instantiate(pfEnemy, pos, Quaternion.identity, enemiesGroup);
-        //enemy.GetComponent<Enemy>().SetEnemy(enemyType);
+        enemy.GetComponent<Enemy>().SetEnemy(enemyType);
     }
 
     void EnemyDirection()
