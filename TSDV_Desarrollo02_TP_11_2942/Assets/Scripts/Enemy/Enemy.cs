@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
         onTime = Time.deltaTime;
         Vector3 objetive = player.transform.position;
         Vector3 direction = objetive - transform.position;
-        transform.Translate(direction.normalized * speed * Time.deltaTime);
+        transform.Translate(direction.normalized * (speed * Time.deltaTime));
     }
 
     private void OnCollisionEnter2D(Collision2D other)
