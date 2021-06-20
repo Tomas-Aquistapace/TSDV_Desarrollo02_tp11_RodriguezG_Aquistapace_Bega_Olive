@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Security.Cryptography;
 using UnityEngine;
-public class Enemy : MonoBehaviour
+
+public class Enemy : MonoBehaviour, ItakeDamage
 {
     private int score = 100;
     public GameObject explosion;
@@ -36,11 +37,16 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "Player" && !destroyed)
+        if (other.transform.tag == "Player" && !destroyed)
         {
             destroyed = true;
             GetComponent<Player>().TakeDamage(damageKamikaze);
             Destroy(gameObject);
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Destroy(gameObject);
     }
 }
