@@ -442,9 +442,11 @@ MonoBehaviour:
   topEdge: 46
   downEdge: -46
   speedMovement: 50
+  maxEnergy: 100
   energy: 100
   speedEnergyDrops: 2
   isDead: 0
+  rateShoot: 0.5
   standarGun: {fileID: 1093794090983491871}
   machineGun: {fileID: 7399381303082310102}
   rocketLauncher: {fileID: 7399381301501857626}
@@ -641,7 +643,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a464af9ae77bdcd46a6289066e0c4d07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

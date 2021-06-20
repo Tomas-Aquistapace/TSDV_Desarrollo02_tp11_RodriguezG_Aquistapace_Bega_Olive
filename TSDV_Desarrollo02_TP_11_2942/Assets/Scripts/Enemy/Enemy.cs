@@ -1,20 +1,46 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Security.Cryptography;
+using UnityEngine;
 public class Enemy : MonoBehaviour
 {
-    [Header("Limits of enemy")]
-    [SerializeField] public float rightEdge;
-    [SerializeField] public float leftEdge;
-    [SerializeField] public float topEdge;
-    [SerializeField] public float downEdge;
-    public void SetEnemy(LevelGenerator.EnemyType enemyType)
+    private int score = 100;
+    public GameObject explosion;
+    private float timeToExplode = 0.8f;
+    private float speed = 5;
+    private float onTime;
+    private int damageKamikaze = 20;
+    public GameObject player;
+    private bool destroyed;
+    private LevelGenerator.EnemyType enemyType = LevelGenerator.EnemyType.End;
+
+    public void SetEnemy(LevelGenerator.EnemyType enemyType, GameObject player)
     {
-        switch (enemyType)
+        this.player = player;
+        this.enemyType = enemyType;
+    }
+
+    private void Start()
+    {
+        if (player)
+            player = FindObjectOfType<Player>().gameObject;
+    }
+
+    private void Update()
+    {
+        onTime = Time.deltaTime;
+        Vector3 objetive = player.transform.position;
+        Vector3 direction = objetive - transform.position;
+        transform.Translate(direction.normalized * speed * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.name == "Player" && !destroyed)
         {
-            case LevelGenerator.EnemyType.Easy:
-                gameObject.AddComponent<Enemy01>();
-                break;
-            case LevelGenerator.EnemyType.Normal:
-                break;
+            destroyed = true;
+            GetComponent<Player>().TakeDamage(damageKamikaze);
+            Destroy(gameObject);
         }
     }
 }

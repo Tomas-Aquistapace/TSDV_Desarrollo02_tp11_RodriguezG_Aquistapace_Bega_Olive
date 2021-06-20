@@ -15,9 +15,9 @@ public class LevelGenerator : MonoBehaviour
 
     public enum EnemyType
     {
-        Easy,
-        Normal,
-        Hard,
+        Horizontal,
+        Vertical,
+        Kamikaze,
         End
     };
 
@@ -87,7 +87,7 @@ public class LevelGenerator : MonoBehaviour
     {
         if (onDebug) Debug.Log("Enemigo en: " + pos);
         //GameObject enemy = Instantiate(pfEnemy, pos, Quaternion.identity, enemiesGroup);
-        //enemy.GetComponent<Enemy>().SetEnemy(enemyType);
+        //enemy.GetComponent<Enemy>().SetEnemy(enemyType, player);
     }
 
     void EnemyDirection()

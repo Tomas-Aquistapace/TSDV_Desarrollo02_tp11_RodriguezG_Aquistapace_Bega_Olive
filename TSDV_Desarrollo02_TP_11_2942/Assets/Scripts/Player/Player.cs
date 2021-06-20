@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UI;
 using UnityEngine;
 
 public class Player : MonoBehaviour, ItakeDamage, Ikillable
@@ -19,8 +20,10 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
     private float speedMovement;
     public int maxEnergy = 100;
     public int energy = 100;
-    public int speedEnergyDrops = 2;
-    public bool isDead = false;
+    public int speedEnergyDrops = 5;
+    public bool isDead;
+    public float rateShoot = 0.3f;
+    private float onTime;
 
     [Header("Player Guns")]
     public GameObject standarGun;
@@ -37,6 +40,7 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
 
     void Update()
     {
+        onTime += Time.deltaTime;
         InputShots();
     }
 
@@ -55,12 +59,31 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
 
     void InputShots()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKey("space"))
         {
-            if(standarGun.activeSelf == true) { standarGun.GetComponent<IcanShoot>().ShootGun(); }
-            if(machineGun.activeSelf == true) { machineGun.GetComponent<IcanShoot>().ShootGun(); }
-            if(rocketLauncher.activeSelf == true) { rocketLauncher.GetComponent<IcanShoot>().ShootGun(); }
-            if(railgun.activeSelf == true) { railgun.GetComponent<IcanShoot>().ShootGun(); }
+            if (onTime > rateShoot)
+            {
+                onTime = 0;
+                if (standarGun.activeSelf == true)
+                {
+                    standarGun.GetComponent<IcanShoot>().ShootGun();
+                }
+
+                if (machineGun.activeSelf == true)
+                {
+                    machineGun.GetComponent<IcanShoot>().ShootGun();
+                }
+
+                if (rocketLauncher.activeSelf == true)
+                {
+                    rocketLauncher.GetComponent<IcanShoot>().ShootGun();
+                }
+
+                if (railgun.activeSelf == true)
+                {
+                    railgun.GetComponent<IcanShoot>().ShootGun();
+                }
+            }
         }
     }
 
