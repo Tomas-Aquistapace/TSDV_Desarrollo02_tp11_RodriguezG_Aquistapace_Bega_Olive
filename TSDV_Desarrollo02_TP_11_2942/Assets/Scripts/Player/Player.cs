@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UI;
 using UnityEngine;
 
 public class Player : MonoBehaviour, ItakeDamage, Ikillable
 {
+    public Action OnDie;
+
     [Header("Limits of player")]
     [SerializeField]
     private float rightEdge = 85f;
@@ -24,6 +27,8 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
     public bool isDead;
     public float rateShoot = 0.3f;
     private float onTime;
+    public int score;
+    public float playedTime;
 
     [Header("Player Guns")]
     public GameObject standarGun;
@@ -40,7 +45,11 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
 
     void Update()
     {
-        onTime += Time.deltaTime;
+        float deltaT = Time.deltaTime;
+
+        playedTime += deltaT;
+        onTime += deltaT;
+
         InputShots();
     }
 
@@ -102,6 +111,11 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
 
     public bool Killable(int value)
     {
-        return value <= 0;
+        if (value > 0)
+        {
+            return false;
+        }
+        OnDie?.Invoke();
+        return true;
     }
 }
