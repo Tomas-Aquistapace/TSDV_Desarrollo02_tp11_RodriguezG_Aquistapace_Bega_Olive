@@ -389,6 +389,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: -20
+  limitY: -412
+  respawnY: 200
 --- !u!1 &440994061
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,8 +948,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: -20
+<<<<<<< HEAD
 --- !u!4 &677702642345120380
 Transform:
+=======
+  limitY: -412
+  respawnY: 200
+--- !u!1 &5392089892631770705
+GameObject:
+>>>>>>> 73eb8cf39ef7f2429dd8ae6cc8dd25d64b5d94a3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}

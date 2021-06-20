@@ -378,6 +378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 405549445}
+  - component: {fileID: 405549446}
   m_Layer: 0
   m_Name: UiResult
   m_TagString: Untagged
@@ -399,6 +400,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &405549446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405549444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548f73fff3638a749a22f44caea8d39f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite:
+  - {fileID: 21300000, guid: 5ec6361c64eb65948b6729f1c8ac57a3, type: 3}
+  - {fileID: 21300000, guid: 23400a80bb907d840b0e8f337fd7e035, type: 3}
+  panelButton: {fileID: 256952334}
 --- !u!1 &494840273
 GameObject:
   m_ObjectHideFlags: 0
