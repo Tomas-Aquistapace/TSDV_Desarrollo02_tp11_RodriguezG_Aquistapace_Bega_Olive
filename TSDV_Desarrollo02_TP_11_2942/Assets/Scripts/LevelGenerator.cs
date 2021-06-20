@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.VFX;
-using Random = UnityEngine.Random;
 
 public class LevelGenerator : MonoBehaviour
 {
     public bool onDebug;
-    public GameObject pfEnemy;
+    public GameObject[] pfEnemy;
     public GameObject pfPlayer;
     public GameObject[] spawners;
     public Transform enemiesGroup;
+    public GameObject player;
 
     public enum EnemyType
     {
@@ -79,19 +76,13 @@ public class LevelGenerator : MonoBehaviour
             enemyPosSpawn.x = Random.Range(0, width) + (int) spawn.position.x;
             enemyPosSpawn.y = Random.Range(0, height) + (int) spawn.position.y;
 
-            SpawnEnemy(enemyPosSpawn, (EnemyType) i);
+            SpawnEnemy(enemyPosSpawn, i);
         }
     }
 
-    void SpawnEnemy(Vector3 pos, EnemyType enemyType)
+    void SpawnEnemy(Vector3 pos, int i)
     {
         if (onDebug) Debug.Log("Enemigo en: " + pos);
-        //GameObject enemy = Instantiate(pfEnemy, pos, Quaternion.identity, enemiesGroup);
-        //enemy.GetComponent<Enemy>().SetEnemy(enemyType, player);
-    }
-
-    void EnemyDirection()
-    {
-        
+        GameObject enemy = Instantiate(pfEnemy[i], pos, Quaternion.identity, enemiesGroup);
     }
 }

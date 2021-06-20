@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Security.Cryptography;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Enemy : MonoBehaviour, ItakeDamage
+public class EnemyKamikaze : MonoBehaviour, ItakeDamage
 {
+
+    // random de powerup en otro script
+
     private int score = 100;
     public GameObject explosion;
     private float timeToExplode = 0.8f;
@@ -13,12 +13,10 @@ public class Enemy : MonoBehaviour, ItakeDamage
     private int damageKamikaze = 20;
     public GameObject player;
     private bool destroyed;
-    private LevelGenerator.EnemyType enemyType = LevelGenerator.EnemyType.End;
 
-    public void SetEnemy(LevelGenerator.EnemyType enemyType, GameObject player)
+    public void SetEnemy(GameObject player)
     {
         this.player = player;
-        this.enemyType = enemyType;
     }
 
     private void Start()
