@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6817638524132263015}
   - component: {fileID: 6817638524132263014}
   - component: {fileID: 505847768}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Power_Machinegun
   m_TagString: Untagged
   m_Icon: {fileID: 0}

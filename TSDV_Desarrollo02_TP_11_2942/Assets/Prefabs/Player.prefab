@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7932608407770860811}
   - component: {fileID: 5768210157712610507}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standar_Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5911154728341889868}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right_Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2595401947153772640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left_Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5059146811548077732}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Center_Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8511327001080300541}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right_Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 7399381301286604049}
   - component: {fileID: 7399381301286604054}
   - component: {fileID: 6393815672701095537}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Railgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 7399381301501857627}
   - component: {fileID: 7399381301501857624}
   - component: {fileID: 1169018130058459742}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rocket_Launcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 7399381302664369127}
   - component: {fileID: 7399381302664369126}
   - component: {fileID: 6064286005183703390}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -446,11 +446,15 @@ MonoBehaviour:
   energy: 100
   speedEnergyDrops: 2
   isDead: 0
+  avaible_nukeBomb: 1
+  secondsToReload: 10
   rateShoot: 0.5
   standarGun: {fileID: 1093794090983491871}
   machineGun: {fileID: 7399381303082310102}
   rocketLauncher: {fileID: 7399381301501857626}
   railgun: {fileID: 7399381301286604048}
+  nukeBomb: {fileID: 2224657127225722610, guid: 15e6719e9f59acd42bb947f2d3c9ab7f,
+    type: 3}
 --- !u!50 &6064286005183703390
 Rigidbody2D:
   serializedVersion: 4
@@ -483,7 +487,7 @@ GameObject:
   - component: {fileID: 7399381303082310103}
   - component: {fileID: 7399381303082310100}
   - component: {fileID: 3032537781454842465}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Machine_Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -584,7 +588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7399381303317992164}
   - component: {fileID: 7399381303317992165}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +668,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8480988563850734018}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Center_Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -694,7 +698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 241587603160624396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left_Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}

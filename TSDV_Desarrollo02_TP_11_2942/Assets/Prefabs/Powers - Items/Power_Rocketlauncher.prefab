@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7011322060483465711}
   - component: {fileID: 7011322060483465710}
   - component: {fileID: 457118675}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Power_Rocketlauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}

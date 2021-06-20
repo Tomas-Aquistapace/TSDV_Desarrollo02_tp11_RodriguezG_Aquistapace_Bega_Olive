@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2620171662736072315}
   - component: {fileID: 2620171662736072317}
   - component: {fileID: 583059475}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Restore_Energy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

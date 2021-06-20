@@ -18,14 +18,20 @@ public class AddWeapon : MonoBehaviour
             {
                 case TypeofGun.machineGun:
                     collision.GetComponent<Player>().machineGun.SetActive(true);
+                    collision.GetComponent<Player>().rocketLauncher.SetActive(false);
+                    collision.GetComponent<Player>().railgun.SetActive(false);
 
                     break;
                 case TypeofGun.rocketLauncher:
                     collision.GetComponent<Player>().rocketLauncher.SetActive(true);
+                    collision.GetComponent<Player>().machineGun.SetActive(false);
+                    collision.GetComponent<Player>().railgun.SetActive(false);
 
                     break;
                 case TypeofGun.railgun:
                     collision.GetComponent<Player>().railgun.SetActive(true);
+                    collision.GetComponent<Player>().machineGun.SetActive(false);
+                    collision.GetComponent<Player>().rocketLauncher.SetActive(false);
 
                     break;
             }

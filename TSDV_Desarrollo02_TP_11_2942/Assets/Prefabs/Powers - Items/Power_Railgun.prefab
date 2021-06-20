@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7509873620541617884}
   - component: {fileID: 7509873620541617887}
   - component: {fileID: 2053782967}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Power_Railgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}

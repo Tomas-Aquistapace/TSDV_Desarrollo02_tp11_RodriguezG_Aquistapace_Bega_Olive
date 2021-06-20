@@ -29,18 +29,23 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
     private float onTime;
     public int score;
     public float playedTime;
+    public bool avaible_nukeBomb = true;
+    public float secondsToReload = 10;
 
     [Header("Player Guns")]
     public GameObject standarGun;
     public GameObject machineGun;
     public GameObject rocketLauncher;
     public GameObject railgun;
+    public GameObject nukeBomb;
 
     float collRadius;
 
     private void Start()
     {
         collRadius = transform.GetComponent<CircleCollider2D>().radius;
+
+        avaible_nukeBomb = true;
     }
 
     void Update()
@@ -51,6 +56,7 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
         onTime += deltaT;
 
         InputShots();
+        InputNuke();
     }
 
     void FixedUpdate()
@@ -94,6 +100,39 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
                 }
             }
         }
+    }
+
+    void InputNuke()
+    {
+        if(Input.GetKeyDown(KeyCode.N))
+        {
+            if (avaible_nukeBomb)
+            {
+                GameObject go = Instantiate(nukeBomb);
+                go.transform.name = nukeBomb.transform.name;
+                go.transform.position = transform.position;
+
+                StartCoroutine(WaitToRecharge());
+            }
+        }
+    }
+
+    private IEnumerator WaitToRecharge()
+    {
+        float time = 0;
+        avaible_nukeBomb = false;
+        Debug.Log("BOOOOM!!");
+
+        nukeBomb.SetActive(true);
+
+        while (time < secondsToReload)
+        {
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        Debug.Log("CARGADA!!");
+        avaible_nukeBomb = true;
     }
 
     public void RestoreEnergy(int amount)

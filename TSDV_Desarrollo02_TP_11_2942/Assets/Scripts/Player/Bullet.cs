@@ -28,25 +28,22 @@ public class Bullet : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.transform.tag == "Enemy")
+    {        
+        collision.GetComponent<ItakeDamage>().TakeDamage(damage);
+
+        switch (collitionType)
         {
-            collision.GetComponent<ItakeDamage>().TakeDamage(damage);
+            case CollitionType.common:
+                Destroy(this.gameObject);
+                break;
 
-            switch (collitionType)
-            {
-                case CollitionType.common:
-                    Destroy(this.gameObject);
-                    break;
+            case CollitionType.explosion:
+                Destroy(this.gameObject);
+                break;
 
-                case CollitionType.explosion:
-                    Destroy(this.gameObject);
-                    break;
+            case CollitionType.pierse:
 
-                case CollitionType.pierse:
-
-                    break;
-            }
+                break;
         }
     }
 }
