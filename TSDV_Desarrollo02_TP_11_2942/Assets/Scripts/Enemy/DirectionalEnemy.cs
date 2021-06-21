@@ -3,12 +3,19 @@
 public class DirectionalEnemy : MonoBehaviour, ItakeDamage
 {
     [Header("Limits of enemy")]
-    public float rightEdge;
-    public float leftEdge;
     public float topEdge;
     public float downEdge;
+    public float leftEdge;
+    public float rightEdge;
 
-    public enum DirectionState
+    public enum DirectionAxis
+    {
+        TopToDown,
+        LeftToRight
+    }
+    public DirectionAxis directionAxis;
+
+    enum DirectionState
     {
         MovingForward,
         MovingBack
@@ -16,27 +23,76 @@ public class DirectionalEnemy : MonoBehaviour, ItakeDamage
     DirectionState currentState;
 
     [Header("Enemy Gun")]
-    public float speed = 10;
+    public float speed = 2;
     public float delayBullet = 1f;
     public GameObject gun;
 
-    Vector3 direction;
-    float time;
+    [SerializeField] Animator anim;
+
+    //private Vector3 direction;
+    private bool destroyed;
+    private float time;
+    private float moveTime;
+
+    Vector3 topVec;
+    Vector3 downVec;
+    Vector3 leftVec;
+    Vector3 rightVec;
+
+    bool initialDirec;  
+        // false == top or left
+        // true == down or right
 
     void Start()
     {
         time = 0;
+        moveTime = 0;
+
+        topVec = new Vector3(transform.position.x, topEdge, 0);
+        downVec = new Vector3(transform.position.x, downEdge, 0);
+        leftVec = new Vector3(leftEdge, transform.position.y, 0);
+        rightVec = new Vector3(rightEdge, transform.position.y, 0);
     }
 
     void OnEnable()
     {
-        currentState = DirectionState.MovingForward;
-        direction = GetDirection();
+        switch (directionAxis)
+        {
+            case DirectionAxis.TopToDown:
+
+                if (transform.position.y > 0)
+                {
+                    currentState = DirectionState.MovingForward;
+                    initialDirec = false;
+                }
+                else if (transform.position.y < 0)
+                {
+                    currentState = DirectionState.MovingBack;
+                    initialDirec = true;
+                }
+
+                break;
+            case DirectionAxis.LeftToRight:
+
+                if (transform.position.x < 0)
+                {
+                    currentState = DirectionState.MovingForward;
+                    initialDirec = false;
+                }
+                else if (transform.position.x > 0)
+                {
+                    currentState = DirectionState.MovingBack;
+                    initialDirec = true;
+                }
+
+                break;
+        }        
     }
 
     void Update()
     {
-        DelayShoot();
+        if(!destroyed)
+            DelayShoot();
     }
 
     void DelayShoot()
@@ -51,56 +107,83 @@ public class DirectionalEnemy : MonoBehaviour, ItakeDamage
 
     void FixedUpdate()
     {
-        switch (currentState)
+        switch (directionAxis)
         {
-            case DirectionState.MovingForward:
-                transform.Translate(direction * speed * Time.deltaTime);
-                if (ChangeDirection()) currentState = DirectionState.MovingBack;
+            case DirectionAxis.TopToDown:
+
+                if (transform.position.y > topVec.y)
+                {
+                    transform.Translate(new Vector3(0, downEdge, 0) * speed * Time.deltaTime);
+                }
+                else if (transform.position.y < downVec.y)
+                {
+                    transform.Translate(new Vector3(0, topEdge, 0) * speed * Time.deltaTime);
+                }
+                else
+                {
+                    if (!initialDirec)
+                        MoveEntity(topVec, downVec);
+                    else
+                        MoveEntity(downVec, topVec);
+                }
+                
                 break;
-            case DirectionState.MovingBack:
-                transform.Translate(-direction * speed * Time.deltaTime);
-                if (ChangeDirection()) currentState = DirectionState.MovingForward;
-                break;
-            default:
+            case DirectionAxis.LeftToRight:
+
+                if (transform.position.x < leftVec.x)
+                {
+                    transform.Translate(new Vector3(rightEdge, 0, 0) * speed * Time.deltaTime);
+                }
+                else if (transform.position.x > rightVec.x)
+                {
+                    transform.Translate(new Vector3(leftEdge, 0, 0) * speed * Time.deltaTime);
+                }
+                else
+                {
+                    if(!initialDirec)
+                        MoveEntity(leftVec, rightVec);
+                    else
+                        MoveEntity(rightVec, leftVec);
+                }
+                
                 break;
         }
     }
 
-    Vector3 GetDirection()
+    
+    void MoveEntity(Vector3 A, Vector3 B)
     {
-        if (transform.position.x < leftEdge)
-            return Vector3.right;
-        if (transform.position.x > rightEdge)
-            return Vector3.left;
-        if (transform.position.y > topEdge)
-            return Vector3.down;
-        if (transform.position.y < downEdge)
-            return Vector3.up;
-
-        return Vector3.zero;
-    }
-
-    bool ChangeDirection()
-    {
-        if (currentState == DirectionState.MovingForward)
+        transform.position = Vector3.Lerp(A, B, moveTime);
+        
+        if(currentState == DirectionState.MovingForward)
         {
-            if (direction == Vector3.right) return transform.position.x >= rightEdge;
-            if (direction == Vector3.left) return transform.position.x <= leftEdge;
-            if (direction == Vector3.down) return transform.position.y <= downEdge;
-            if (direction == Vector3.up) return transform.position.y >= topEdge;
+            moveTime += speed * Time.deltaTime;
+
+            if(moveTime >= 1)
+            {
+                currentState = DirectionState.MovingBack;
+                moveTime = 1;
+            }
         }
-        else
+        else if (currentState == DirectionState.MovingBack)
         {
-            if (direction == Vector3.right) return !(transform.position.x >= leftEdge);
-            if (direction == Vector3.left) return !(transform.position.x <= rightEdge);
-            if (direction == Vector3.down) return transform.position.y >= topEdge;
-            if (direction == Vector3.up) return !(transform.position.y >= downEdge);
+            moveTime -= speed * Time.deltaTime;
+
+            if (moveTime <= 0)
+            {
+                currentState = DirectionState.MovingForward;
+                moveTime = 0;
+            }
         }
-        return true;
     }
 
     public void TakeDamage(int damage)
     {
-        Destroy(gameObject);
+        anim.SetBool("IsDead", true);
+        transform.GetComponent<CircleCollider2D>().enabled = false;
+
+        destroyed = true;
+
+        Destroy(gameObject, 1f);
     }
 }

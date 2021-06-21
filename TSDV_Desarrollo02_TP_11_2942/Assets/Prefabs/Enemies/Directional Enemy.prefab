@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 4812528076873130093}
   - component: {fileID: 6684355846888896975}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: Directional Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.15}
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.4
 --- !u!50 &4812528076873130093
 Rigidbody2D:
   serializedVersion: 4
@@ -139,6 +139,7 @@ MonoBehaviour:
   speed: 20
   delayBullet: 1
   gun: {fileID: 4812528076699450373}
+  anim: {fileID: 210505468}
 --- !u!1 &4812528077227050633
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,6 +150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4812528077227050634}
   - component: {fileID: 4812528077227050635}
+  - component: {fileID: 210505468}
   m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
@@ -209,7 +211,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 87d48a57ee806104485ad8b93c93f52b, type: 3}
+  m_Sprite: {fileID: 966798554931693391, guid: db6388da879698540831ff2ad5ea7d07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 1
@@ -220,3 +222,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &210505468
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4812528077227050633}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3b0afa0f23f27264b848c7af5e262409, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

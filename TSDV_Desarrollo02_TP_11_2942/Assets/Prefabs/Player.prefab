@@ -437,8 +437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7cb6aec9a22d3148b24f5e710ccbcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightEdge: 85
-  leftEdge: -85
+  rightEdge: 45
+  leftEdge: -45
   topEdge: 46
   downEdge: -46
   speedMovement: 50
@@ -446,9 +446,11 @@ MonoBehaviour:
   energy: 100
   speedEnergyDrops: 2
   isDead: 0
+  rateShoot: 0.5
+  score: 0
+  playedTime: 0
   avaible_nukeBomb: 1
   secondsToReload: 10
-  rateShoot: 0.5
   standarGun: {fileID: 1093794090983491871}
   machineGun: {fileID: 7399381303082310102}
   rocketLauncher: {fileID: 7399381301501857626}

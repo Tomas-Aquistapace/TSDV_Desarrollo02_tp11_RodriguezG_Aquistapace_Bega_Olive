@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6498207344662897348}
   - component: {fileID: 4902523331319124589}
   - component: {fileID: 378450642009118182}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: RailgunBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

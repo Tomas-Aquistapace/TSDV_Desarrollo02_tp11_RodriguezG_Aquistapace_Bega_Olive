@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6528123800845585757}
   - component: {fileID: 4953829684561100276}
   - component: {fileID: 429616569147144831}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: RocketBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
