@@ -31,6 +31,9 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
     public float playedTime;
     public bool avaible_nukeBomb = true;
     public float secondsToReload = 10;
+    private float rateRestoreEnergy = 0.2f;
+    private float restoreEnergyTimer;
+    private int amountRestoreEnergy = 1;
 
     [Header("Player Guns")]
     public GameObject standarGun;
@@ -51,12 +54,17 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
     void Update()
     {
         float deltaT = Time.deltaTime;
-
+        restoreEnergyTimer += deltaT;
         playedTime += deltaT;
         onTime += deltaT;
 
         InputShots();
         InputNuke();
+        if (restoreEnergyTimer > rateRestoreEnergy)
+        {
+            restoreEnergyTimer = 0;
+            RestoreEnergy(amountRestoreEnergy);
+        }
     }
 
     void FixedUpdate()
