@@ -1,12 +1,16 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using Random = UnityEngine.Random;
 
 public class DirectionalEnemy : MonoBehaviour, ItakeDamage
 {
     private LevelGenerator levelGenerator;
+    private int ratedrop = 30;
 
     public int score;
+
+    public GameObject[] rewardGameObject;
 
     [Header("Limits of enemy")]
     public float topEdge;
@@ -234,6 +238,13 @@ public class DirectionalEnemy : MonoBehaviour, ItakeDamage
     {
         anim.SetBool("IsDead", true);
         transform.GetComponent<CircleCollider2D>().enabled = false;
+
+        int rand = Random.Range(1, 101);
+        if (rand <= ratedrop)
+        {
+            int randPowerUp = Random.Range(0, rewardGameObject.Length);
+            Instantiate(rewardGameObject[randPowerUp], transform.position, Quaternion.identity);
+        }
 
         destroyed = true;
 

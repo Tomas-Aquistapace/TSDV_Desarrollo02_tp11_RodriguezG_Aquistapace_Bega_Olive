@@ -26,11 +26,6 @@ public class SaveData : MonoBehaviour
         player.OnDie += SaveDataGame;
     }
 
-    void Update()
-    {
-        
-    }
-
     void SaveDataGame()
     {
         score = levelGenerator.score;

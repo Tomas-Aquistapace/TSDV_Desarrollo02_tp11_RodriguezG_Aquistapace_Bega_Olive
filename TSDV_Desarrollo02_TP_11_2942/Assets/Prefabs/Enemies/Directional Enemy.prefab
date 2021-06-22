@@ -133,6 +133,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 10
+  rewardGameObject:
+  - {fileID: 6817638524132263011, guid: a585fa8614323ee46860a6cfc96c79fe, type: 3}
+  - {fileID: 7509873620541617886, guid: 5fa07e04d75b3314cb9640cc6f52de8b, type: 3}
+  - {fileID: 7011322060483465697, guid: 528b59337abf87b43a981d524b46405f, type: 3}
+  - {fileID: 2620171662736072314, guid: baac982f672967949be0f23e03ef2c23, type: 3}
   topEdge: 35
   downEdge: -35
   leftEdge: -75

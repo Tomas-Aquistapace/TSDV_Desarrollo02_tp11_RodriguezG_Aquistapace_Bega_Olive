@@ -2,6 +2,9 @@
 
 public class Enemy : MonoBehaviour, ItakeDamage
 {
+    public GameObject[] rewardGameObject;
+    private int ratedrop = 20;
+
     public int score;
     public float speed = 40f;
     public GameObject player;
@@ -43,11 +46,18 @@ public class Enemy : MonoBehaviour, ItakeDamage
             destroyed = true;
             other.transform.GetComponent<Player>().TakeDamage(damageKamikaze);
             TakeDamage(0);
+            ratedrop = 0;
         }
     }
 
     public void TakeDamage(int damage)
     {
+        int rand = Random.Range(1, 101);
+        if (rand <= ratedrop)
+        {
+            int randPowerUp = Random.Range(0, rewardGameObject.Length);
+            Instantiate(rewardGameObject[randPowerUp], transform.position, Quaternion.identity);
+        }
         anim.SetBool("IsDead", true);
         transform.GetComponent<CircleCollider2D>().enabled = false;
 
