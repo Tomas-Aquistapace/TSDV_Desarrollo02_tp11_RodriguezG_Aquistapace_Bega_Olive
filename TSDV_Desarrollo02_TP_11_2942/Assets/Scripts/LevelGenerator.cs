@@ -6,16 +6,18 @@ using Random = UnityEngine.Random;
 public class LevelGenerator : MonoBehaviour
 {
     public bool onDebug;
-    
+    public int score;
     public GameObject[] spawners;
     public Transform enemiesGroup;
-    
-    private int level = 1;
+    public int totalEnemies;
+    public int level = 1;
     private float dificultMultiply = 3;
-    private float onTimeLevel;
-    
-    [Serializable]
-    public class Enemies
+    public float timePlayed;
+
+    private int enemyKilledPerLevel = 5;
+    public int enemyKilledCount;
+
+    [Serializable] public class Enemies
     {
         public GameObject pfEnemy;
         [HideInInspector] public float ontime;
@@ -25,51 +27,57 @@ public class LevelGenerator : MonoBehaviour
     }
 
     [SerializeField] public List<Enemies> enemies = new List<Enemies>();
-
-    private void Start()
-    {
-        
-    }
-
-    void ProgressEquation()
+    
+    void ProgressEquationLevel()
     {
         for (int i = 0; i < enemies.Count; i++)
         {
             enemies[i].rateSpawn *= 0.9f;
         }
+
+        level++;
+        enemyKilledPerLevel = enemyKilledPerLevel * (1 + 1 / level);
+        enemyKilledCount = 0;
     }
 
     void Update()
     {
-        onTimeLevel += Time.deltaTime;
+        timePlayed += Time.deltaTime;
 
         CheckSpawnEnemy();
     }
 
     void CheckSpawnEnemy()
     {
-        float deltaT = Time.deltaTime;
-
-        for (int i = 0; i < enemies.Count; i++)
+        if (enemyKilledCount < enemyKilledPerLevel)
         {
-            enemies[i].ontime += deltaT;
-            if (enemies[i].ontime < enemies[i].rateSpawn)
-                continue;
+            float deltaT = Time.deltaTime;
 
-            enemies[i].ontime = 0;
-                
-            int enemySpawn = Random.Range(0, spawners.Length);
-            Transform spawn = spawners[enemySpawn].transform;
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                enemies[i].ontime += deltaT;
+                if (enemies[i].ontime < enemies[i].rateSpawn)
+                    continue;
 
-            int width = (int) (spawn.localScale.x / 2);
-            int height = (int) (spawn.localScale.y / 2);
+                enemies[i].ontime = 0;
 
-            Vector3 enemyPosSpawn = Vector3.zero;
-            enemyPosSpawn.x = Random.Range(0, width) + (int) spawn.position.x;
-            enemyPosSpawn.y = Random.Range(0, height) + (int) spawn.position.y;
+                int enemySpawn = Random.Range(0, spawners.Length);
+                Transform spawn = spawners[enemySpawn].transform;
 
-            if (enemies[i].enemiesCount < enemies[i].maxEnemies)
-                SpawnEnemy(enemyPosSpawn, i);
+                int width = (int) (spawn.localScale.x / 2);
+                int height = (int) (spawn.localScale.y / 2);
+
+                Vector3 enemyPosSpawn = Vector3.zero;
+                enemyPosSpawn.x = Random.Range(0, width) + (int) spawn.position.x;
+                enemyPosSpawn.y = Random.Range(0, height) + (int) spawn.position.y;
+
+                if (enemies[i].enemiesCount < enemies[i].maxEnemies)
+                    SpawnEnemy(enemyPosSpawn, i);
+            }
+        }
+        else
+        {
+            ProgressEquationLevel();
         }
     }
 

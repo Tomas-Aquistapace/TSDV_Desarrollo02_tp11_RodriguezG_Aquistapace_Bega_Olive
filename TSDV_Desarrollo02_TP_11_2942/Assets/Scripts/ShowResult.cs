@@ -1,30 +1,37 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ShowResult : MonoBehaviour
 {
-    public Sprite[] sprite; // 1: Win 2: Lose
-    private int win;
+    public Sprite sprite;
     public GameObject panelButton;
     private Camera cam;
+    private SaveData saveData;
+
+    public TextMeshProUGUI text;
+
+
+    public int score;
+    public float enemyKilled;
+    public float lapsedTime;
 
     private void Awake()
     {
         cam = Camera.main;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        panelButton.GetComponent<Image>().sprite = sprite[win];
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        saveData = FindObjectOfType<SaveData>();
+        panelButton.GetComponent<Image>().sprite = sprite;
+        score = saveData.score;
+        enemyKilled = saveData.enemyKilled;
+        lapsedTime = saveData.lapsedTime;
+        Destroy(saveData.gameObject);
+        text.text = "Score: " + score + "\nEnemies Killed: " + enemyKilled + "\nTime: " + lapsedTime;
     }
 }

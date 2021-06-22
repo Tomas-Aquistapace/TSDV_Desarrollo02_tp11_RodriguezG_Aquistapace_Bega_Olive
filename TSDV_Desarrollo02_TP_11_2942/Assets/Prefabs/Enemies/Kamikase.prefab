@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4627405420770411050}
   - component: {fileID: 4627405420770411051}
   - component: {fileID: 7392893063841371880}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4627405422390229158}
   - component: {fileID: 4627405422390229159}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 4627405422630233293}
   - component: {fileID: 4627405422630233298}
   - component: {fileID: 2137953078474354263}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Kamikase
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -235,6 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee2ebd2a2b0d1b4bbad1a733475a33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 20
   speed: 20
   player: {fileID: 0}
   anim: {fileID: 7392893063841371880}

@@ -197,5 +197,8 @@ public class DirectionalEnemy : MonoBehaviour, ItakeDamage
 
         Destroy(gameObject, 1f);
         levelGenerator.enemies[0].enemiesCount--;
+        levelGenerator.enemyKilledCount++;
+        levelGenerator.score += score;
+        levelGenerator.totalEnemies++;
     }
 }

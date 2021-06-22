@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Security.Cryptography;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour, ItakeDamage
 {
@@ -53,5 +50,8 @@ public class Enemy : MonoBehaviour, ItakeDamage
 
         Destroy(this.gameObject, timeToExplode);
         levelGenerator.enemies[1].enemiesCount--;
+        levelGenerator.enemyKilledCount++;
+        levelGenerator.score += score;
+        levelGenerator.totalEnemies ++;
     }
 }
