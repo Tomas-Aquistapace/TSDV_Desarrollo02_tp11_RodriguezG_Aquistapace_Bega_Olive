@@ -11,6 +11,7 @@ public class UiGameHud : MonoBehaviour
     public Image life;
     public TextMeshProUGUI textEnemies;
     public TextMeshProUGUI textTime;
+    public TextMeshProUGUI textScore;
     private LevelGenerator levelGenerator;
     private float onTime;
 
@@ -30,6 +31,7 @@ public class UiGameHud : MonoBehaviour
         life.fillAmount = player.energy / (float)player.maxEnergy;
         textTime.text = "Time: " + onTime.ToString("F2");
         textEnemies.text = "Enemies Kill: " + levelGenerator.totalEnemies;
+        textScore.text = "Score: " + levelGenerator.score;
     }
 
     public void Pause()

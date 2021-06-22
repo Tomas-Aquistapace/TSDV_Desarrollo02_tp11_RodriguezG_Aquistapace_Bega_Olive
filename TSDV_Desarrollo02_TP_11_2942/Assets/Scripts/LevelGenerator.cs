@@ -12,7 +12,6 @@ public class LevelGenerator : MonoBehaviour
     public Transform enemiesGroup;
     public int totalEnemies;
     public int level = 1;
-    private float dificultMultiply = 3;
     public float timePlayed;
 
     private int enemyKilledPerLevel = 5;

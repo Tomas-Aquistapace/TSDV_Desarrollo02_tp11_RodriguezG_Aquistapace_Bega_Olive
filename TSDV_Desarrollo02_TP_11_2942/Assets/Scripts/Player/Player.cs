@@ -130,6 +130,21 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
                 GameObject go = Instantiate(nukeBomb);
                 go.transform.name = nukeBomb.transform.name;
                 go.transform.position = transform.position;
+                Enemy[] enemies = FindObjectsOfType<Enemy>();
+                foreach (var enemy in enemies)
+                {
+                    enemy.TakeDamage(0);
+                }
+                DirectionalEnemy[] enemiesDirectional = FindObjectsOfType<DirectionalEnemy>();
+                foreach (var enemy in enemiesDirectional)
+                {
+                    enemy.TakeDamage(0);
+                }
+                BulletEnemy[] bulletEnemy = FindObjectsOfType<BulletEnemy>();
+                foreach (var bullet in bulletEnemy)
+                {
+                    Destroy(bullet.gameObject);
+                }
 
                 StartCoroutine(WaitToRecharge());
             }
