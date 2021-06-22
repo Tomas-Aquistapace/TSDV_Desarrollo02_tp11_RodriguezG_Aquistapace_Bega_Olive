@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 
 public class LevelGenerator : MonoBehaviour
 {
+    public bool onGame = true;
     public bool onDebug;
     public int score;
     public GameObject[] spawners;
@@ -42,9 +43,11 @@ public class LevelGenerator : MonoBehaviour
 
     void Update()
     {
-        timePlayed += Time.deltaTime;
-
-        CheckSpawnEnemy();
+        if (onGame)
+        {
+            timePlayed += Time.deltaTime;
+            CheckSpawnEnemy();
+        }
     }
 
     void CheckSpawnEnemy()

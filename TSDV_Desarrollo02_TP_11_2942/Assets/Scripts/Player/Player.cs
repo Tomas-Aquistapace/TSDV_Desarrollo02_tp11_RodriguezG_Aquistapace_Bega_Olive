@@ -41,8 +41,13 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
     public GameObject rocketLauncher;
     public GameObject railgun;
     public GameObject nukeBomb;
-
+    private LevelGenerator levelGenerator;
     float collRadius;
+
+    private void Awake()
+    {
+        levelGenerator = FindObjectOfType<LevelGenerator>();
+    }
 
     private void Start()
     {
@@ -53,23 +58,29 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
 
     void Update()
     {
-        float deltaT = Time.deltaTime;
-        restoreEnergyTimer += deltaT;
-        playedTime += deltaT;
-        onTime += deltaT;
-
-        InputShots();
-        InputNuke();
-        if (restoreEnergyTimer > rateRestoreEnergy)
+        if (levelGenerator.onGame)
         {
-            restoreEnergyTimer = 0;
-            RestoreEnergy(amountRestoreEnergy);
+            float deltaT = Time.deltaTime;
+            restoreEnergyTimer += deltaT;
+            playedTime += deltaT;
+            onTime += deltaT;
+
+            InputShots();
+            InputNuke();
+            if (restoreEnergyTimer > rateRestoreEnergy)
+            {
+                restoreEnergyTimer = 0;
+                RestoreEnergy(amountRestoreEnergy);
+            }
         }
     }
 
     void FixedUpdate()
     {
-        InputMovement();
+        if (levelGenerator.onGame)
+        {
+            InputMovement();
+        }
     }
 
     void InputMovement()

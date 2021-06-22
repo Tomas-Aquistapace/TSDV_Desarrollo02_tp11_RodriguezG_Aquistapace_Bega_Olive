@@ -34,6 +34,6 @@ public class UiGameHud : MonoBehaviour
 
     public void Pause()
     {
-        Time.timeScale = Time.timeScale > 0.5 ? 0 : 1;
+        levelGenerator.onGame = !levelGenerator.onGame;
     }
 }

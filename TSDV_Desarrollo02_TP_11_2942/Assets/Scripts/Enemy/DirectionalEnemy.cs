@@ -120,8 +120,11 @@ public class DirectionalEnemy : MonoBehaviour, ItakeDamage
 
     void Update()
     {
-        if(!destroyed)
-            DelayShoot();
+        if (levelGenerator.onGame)
+        {
+            if (!destroyed)
+                DelayShoot();
+        }
     }
 
     void DelayShoot()
@@ -136,46 +139,49 @@ public class DirectionalEnemy : MonoBehaviour, ItakeDamage
 
     void FixedUpdate()
     {
-        switch (directionAxis)
+        if (levelGenerator.onGame)
         {
-            case DirectionAxis.TopToDown:
+            switch (directionAxis)
+            {
+                case DirectionAxis.TopToDown:
 
-                if (transform.position.y > topVec.y)
-                {
-                    transform.Translate(new Vector3(0, downEdge, 0) * (speed / 4f) * Time.deltaTime);
-                }
-                else if (transform.position.y < downVec.y)
-                {
-                    transform.Translate(new Vector3(0, topEdge, 0) * (speed / 4f) * Time.deltaTime);
-                }
-                else
-                {
-                    if (!initialDirec)
-                        MoveEntity(topVec, downVec);
+                    if (transform.position.y > topVec.y)
+                    {
+                        transform.Translate(new Vector3(0, downEdge, 0) * (speed / 4f) * Time.deltaTime);
+                    }
+                    else if (transform.position.y < downVec.y)
+                    {
+                        transform.Translate(new Vector3(0, topEdge, 0) * (speed / 4f) * Time.deltaTime);
+                    }
                     else
-                        MoveEntity(downVec, topVec);
-                }
-                
-                break;
-            case DirectionAxis.LeftToRight:
+                    {
+                        if (!initialDirec)
+                            MoveEntity(topVec, downVec);
+                        else
+                            MoveEntity(downVec, topVec);
+                    }
 
-                if (transform.position.x < leftVec.x)
-                {
-                    transform.Translate(new Vector3(rightEdge, 0, 0) * (speed / 4f) * Time.deltaTime);
-                }
-                else if (transform.position.x > rightVec.x)
-                {
-                    transform.Translate(new Vector3(leftEdge, 0, 0) * (speed / 4f) * Time.deltaTime);
-                }
-                else
-                {
-                    if(!initialDirec)
-                        MoveEntity(leftVec, rightVec);
+                    break;
+                case DirectionAxis.LeftToRight:
+
+                    if (transform.position.x < leftVec.x)
+                    {
+                        transform.Translate(new Vector3(rightEdge, 0, 0) * (speed / 4f) * Time.deltaTime);
+                    }
+                    else if (transform.position.x > rightVec.x)
+                    {
+                        transform.Translate(new Vector3(leftEdge, 0, 0) * (speed / 4f) * Time.deltaTime);
+                    }
                     else
-                        MoveEntity(rightVec, leftVec);
-                }
-                
-                break;
+                    {
+                        if (!initialDirec)
+                            MoveEntity(leftVec, rightVec);
+                        else
+                            MoveEntity(rightVec, leftVec);
+                    }
+
+                    break;
+            }
         }
     }
 

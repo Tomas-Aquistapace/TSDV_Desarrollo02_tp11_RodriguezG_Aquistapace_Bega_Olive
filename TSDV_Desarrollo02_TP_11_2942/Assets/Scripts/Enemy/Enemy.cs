@@ -27,10 +27,13 @@ public class Enemy : MonoBehaviour, ItakeDamage
 
     private void Update()
     {
-        onTime = Time.deltaTime;
-        Vector3 objetive = player.transform.position;
-        Vector3 direction = objetive - transform.position;
-        transform.Translate(direction.normalized * (speed * Time.deltaTime));
+        if (levelGenerator.onGame)
+        {
+            onTime = Time.deltaTime;
+            Vector3 objetive = player.transform.position;
+            Vector3 direction = objetive - transform.position;
+            transform.Translate(direction.normalized * (speed * Time.deltaTime));
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)

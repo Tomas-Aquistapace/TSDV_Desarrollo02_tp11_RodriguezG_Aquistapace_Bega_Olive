@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class BulletEnemy : MonoBehaviour
 {
@@ -8,6 +9,12 @@ public class BulletEnemy : MonoBehaviour
     Vector3 playerPos;
     Vector3 initialPos;
     Vector3 direction;
+    private LevelGenerator levelGenerator;
+    private float onTime;
+    private void Awake()
+    {
+        levelGenerator = FindObjectOfType<LevelGenerator>();
+    }
 
     private void Start()
     {
@@ -16,12 +23,19 @@ public class BulletEnemy : MonoBehaviour
 
         direction = playerPos - initialPos;
 
-        Destroy(this.gameObject, timeToDestroy);
+        
     }
 
     void Update()
     {
-        transform.Translate(direction.normalized * speed * Time.deltaTime);
+        
+        if (levelGenerator.onGame)
+        {
+            onTime += Time.deltaTime; 
+            transform.Translate(direction.normalized * speed * Time.deltaTime);
+            if (onTime > timeToDestroy)
+                Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
