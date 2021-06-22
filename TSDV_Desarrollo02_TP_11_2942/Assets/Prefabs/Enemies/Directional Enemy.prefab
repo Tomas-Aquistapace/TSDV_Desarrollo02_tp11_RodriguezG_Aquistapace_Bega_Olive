@@ -138,8 +138,9 @@ MonoBehaviour:
   leftEdge: -75
   rightEdge: 75
   directionAxis: 0
-  speed: 2.15
-  delayBullet: 1
+  speed: 1.75
+  delayBullet: 1.5
+  body: {fileID: 4812528077227050633}
   gun: {fileID: 4812528076699450373}
   anim: {fileID: 210505468}
 --- !u!1 &4812528077227050633

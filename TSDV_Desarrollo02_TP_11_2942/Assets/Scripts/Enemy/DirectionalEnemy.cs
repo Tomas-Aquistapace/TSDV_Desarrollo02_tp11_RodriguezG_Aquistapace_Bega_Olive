@@ -31,6 +31,7 @@ public class DirectionalEnemy : MonoBehaviour, ItakeDamage
     [Header("Enemy Gun")]
     public float speed = 2;
     public float delayBullet = 1f;
+    public GameObject body;
     public GameObject gun;
 
     [SerializeField] Animator anim;
@@ -67,6 +68,23 @@ public class DirectionalEnemy : MonoBehaviour, ItakeDamage
 
     void OnEnable()
     {
+        if (transform.position.y > topEdge + 5f)
+        {
+            directionAxis = DirectionAxis.TopToDown;
+        }
+        else
+        {
+            directionAxis = DirectionAxis.LeftToRight;
+            if(transform.position.x > 0)
+            {
+                body.transform.rotation = Quaternion.Euler(0, 0, 90);
+            }
+            else
+            {
+                body.transform.rotation = Quaternion.Euler(0, 0, 90);
+            }
+        }
+
         switch (directionAxis)
         {
             case DirectionAxis.TopToDown:
@@ -124,11 +142,11 @@ public class DirectionalEnemy : MonoBehaviour, ItakeDamage
 
                 if (transform.position.y > topVec.y)
                 {
-                    transform.Translate(new Vector3(0, downEdge, 0) * speed * Time.deltaTime);
+                    transform.Translate(new Vector3(0, downEdge, 0) * (speed / 4f) * Time.deltaTime);
                 }
                 else if (transform.position.y < downVec.y)
                 {
-                    transform.Translate(new Vector3(0, topEdge, 0) * speed * Time.deltaTime);
+                    transform.Translate(new Vector3(0, topEdge, 0) * (speed / 4f) * Time.deltaTime);
                 }
                 else
                 {
@@ -143,11 +161,11 @@ public class DirectionalEnemy : MonoBehaviour, ItakeDamage
 
                 if (transform.position.x < leftVec.x)
                 {
-                    transform.Translate(new Vector3(rightEdge, 0, 0) * speed * Time.deltaTime);
+                    transform.Translate(new Vector3(rightEdge, 0, 0) * (speed / 4f) * Time.deltaTime);
                 }
                 else if (transform.position.x > rightVec.x)
                 {
-                    transform.Translate(new Vector3(leftEdge, 0, 0) * speed * Time.deltaTime);
+                    transform.Translate(new Vector3(leftEdge, 0, 0) * (speed / 4f) * Time.deltaTime);
                 }
                 else
                 {
@@ -168,20 +186,38 @@ public class DirectionalEnemy : MonoBehaviour, ItakeDamage
         
         if(currentState == DirectionState.MovingForward)
         {
-            moveTime += speed * Time.deltaTime;
+            moveTime += (speed / 4f) * Time.deltaTime;
 
             if(moveTime >= 1)
             {
+                if (directionAxis == DirectionAxis.TopToDown)
+                {
+                    body.transform.rotation = Quaternion.Euler(0, -90, 0);
+                }
+                else
+                {
+                    body.transform.rotation = Quaternion.Inverse(body.transform.rotation);
+                }
+
                 currentState = DirectionState.MovingBack;
                 moveTime = 1;
             }
         }
         else if (currentState == DirectionState.MovingBack)
         {
-            moveTime -= speed * Time.deltaTime;
+            moveTime -= (speed / 4f) * Time.deltaTime;
 
             if (moveTime <= 0)
             {
+                if (directionAxis == DirectionAxis.TopToDown)
+                {
+                    body.transform.rotation = Quaternion.Euler(0, 90, 0);
+                }
+                else
+                {
+                    body.transform.rotation = Quaternion.Inverse(body.transform.rotation);
+                }
+
                 currentState = DirectionState.MovingForward;
                 moveTime = 0;
             }
