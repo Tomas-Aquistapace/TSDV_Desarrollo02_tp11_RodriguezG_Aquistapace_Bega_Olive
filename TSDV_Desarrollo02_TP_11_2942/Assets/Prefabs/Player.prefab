@@ -437,8 +437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7cb6aec9a22d3148b24f5e710ccbcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightEdge: 45
-  leftEdge: -45
+  rightEdge: 86
+  leftEdge: -86
   topEdge: 46
   downEdge: -46
   speedMovement: 50

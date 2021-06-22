@@ -1,7 +1,22 @@
 fileFormatVersion: 2
-guid: 717087318e7c3544793a29c2030c9305
+guid: e7b2ea29eda605e4693be5d88883335a
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5847981276679785075
+    second: Energy Orb_0
+  - first:
+      213: 1712160082060987655
+    second: Energy Orb_1
+  - first:
+      213: 4937598340836955839
+    second: Energy Orb_2
+  - first:
+      213: 1422461021103354427
+    second: Energy Orb_3
+  - first:
+      213: -207350706166008839
+    second: Energy Orb_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,11 +136,116 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Energy Orb_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 0
+        width: 72
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37a42a9bcf3382150800000000000000
+      internalID: 5847981276679785075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Orb_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 0
+        width: 72
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70d49d1f580d2c710800000000000000
+      internalID: 1712160082060987655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Orb_2
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 0
+        width: 71
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb6152dc78fd58440800000000000000
+      internalID: 4937598340836955839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Orb_3
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 0
+        width: 71
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3274bd13c89db310800000000000000
+      internalID: 1422461021103354427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Orb_4
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 0
+        width: 74
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f37c0f91a75f1df0800000000000000
+      internalID: -207350706166008839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 3914058d1c4fe4a488d9016856bd9578
     internalID: 0
     vertices: []
     indices: 

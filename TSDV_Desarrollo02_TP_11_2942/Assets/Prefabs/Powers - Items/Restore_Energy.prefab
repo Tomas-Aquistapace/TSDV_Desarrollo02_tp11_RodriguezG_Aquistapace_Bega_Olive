@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2620171662736072315}
   - component: {fileID: 2620171662736072317}
   - component: {fileID: 583059475}
+  - component: {fileID: 6054866040088668389}
   m_Layer: 10
   m_Name: Restore_Energy
   m_TagString: Untagged
@@ -72,7 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dc39ac9e59fa30949a8b0f4503a33aca, type: 3}
+  m_Sprite: {fileID: 5847981276679785075, guid: e7b2ea29eda605e4693be5d88883335a,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -112,3 +114,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalRestore: 100
+--- !u!95 &6054866040088668389
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2620171662736072314}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 91aed3e34347ee94a8a0351842a56859, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
