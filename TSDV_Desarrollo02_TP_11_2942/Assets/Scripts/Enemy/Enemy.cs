@@ -5,28 +5,26 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, ItakeDamage
 {
-    public float speed = 30f;
+    public int score;
+    public float speed = 40f;
     public GameObject player;
-    //public int score = 100;
+
     [SerializeField] Animator anim;
-
-
-    //private float timeToExplode = 0.8f;
+    
+    private float timeToExplode = 1f;
     private float onTime;
     private int damageKamikaze = 20;
     private bool destroyed;
-    private LevelGenerator.EnemyType enemyType = LevelGenerator.EnemyType.End;
-
-
-    public void SetEnemy(LevelGenerator.EnemyType enemyType, GameObject player)
+    private LevelGenerator levelGenerator;
+    private void Awake()
     {
-        this.player = player;
-        this.enemyType = enemyType;
+        levelGenerator = FindObjectOfType<LevelGenerator>();
+        player = FindObjectOfType<Player>().gameObject;
     }
 
     private void Start()
     {
-        if (player)
+        if (!player)
             player = FindObjectOfType<Player>().gameObject;
     }
 
@@ -36,9 +34,6 @@ public class Enemy : MonoBehaviour, ItakeDamage
         Vector3 objetive = player.transform.position;
         Vector3 direction = objetive - transform.position;
         transform.Translate(direction.normalized * (speed * Time.deltaTime));
-
-        transform.LookAt(objetive);
-
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -47,7 +42,7 @@ public class Enemy : MonoBehaviour, ItakeDamage
         {
             destroyed = true;
             other.transform.GetComponent<Player>().TakeDamage(damageKamikaze);
-            Destroy(gameObject);
+            TakeDamage(0);
         }
     }
 
@@ -56,6 +51,7 @@ public class Enemy : MonoBehaviour, ItakeDamage
         anim.SetBool("IsDead", true);
         transform.GetComponent<CircleCollider2D>().enabled = false;
 
-        Destroy(this.gameObject, 1f);
+        Destroy(this.gameObject, timeToExplode);
+        levelGenerator.enemies[1].enemiesCount--;
     }
 }

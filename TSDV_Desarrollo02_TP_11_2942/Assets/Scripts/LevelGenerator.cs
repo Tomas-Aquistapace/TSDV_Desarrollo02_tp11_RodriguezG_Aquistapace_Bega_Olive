@@ -1,43 +1,34 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class LevelGenerator : MonoBehaviour
 {
     public bool onDebug;
-    public GameObject[] pfEnemy;
-    public GameObject pfPlayer;
+    
     public GameObject[] spawners;
     public Transform enemiesGroup;
-    public GameObject player;
-
-    public enum EnemyType
-    {
-        Horizontal,
-        Vertical,
-        Kamikaze,
-        End
-    };
-
+    
     private int level = 1;
     private float dificultMultiply = 3;
     private float onTimeLevel;
     
+    [Serializable]
     public class Enemies
     {
-        public float ontime;
+        public GameObject pfEnemy;
+        [HideInInspector] public float ontime;
         public float rateSpawn;
+        public int enemiesCount;
+        public int maxEnemies;
     }
 
-    private List<Enemies> enemies = new List<Enemies>();
+    [SerializeField] public List<Enemies> enemies = new List<Enemies>();
 
     private void Start()
     {
-        for (int i = 0; i < (int)EnemyType.End; i++)
-        {
-            Enemies enemy = new Enemies();          // todo: Chequear si está bien y no genero un puntero
-            enemy.rateSpawn = dificultMultiply + ((float)i / 3.0f) * (float)level;
-            enemies.Add(enemy);
-        }
+        
     }
 
     void ProgressEquation()
@@ -58,6 +49,7 @@ public class LevelGenerator : MonoBehaviour
     void CheckSpawnEnemy()
     {
         float deltaT = Time.deltaTime;
+
         for (int i = 0; i < enemies.Count; i++)
         {
             enemies[i].ontime += deltaT;
@@ -76,13 +68,15 @@ public class LevelGenerator : MonoBehaviour
             enemyPosSpawn.x = Random.Range(0, width) + (int) spawn.position.x;
             enemyPosSpawn.y = Random.Range(0, height) + (int) spawn.position.y;
 
-            SpawnEnemy(enemyPosSpawn, i);
+            if (enemies[i].enemiesCount < enemies[i].maxEnemies)
+                SpawnEnemy(enemyPosSpawn, i);
         }
     }
 
     void SpawnEnemy(Vector3 pos, int i)
     {
         if (onDebug) Debug.Log("Enemigo en: " + pos);
-        GameObject enemy = Instantiate(pfEnemy[i], pos, Quaternion.identity, enemiesGroup);
+        GameObject enemy = Instantiate(enemies[i].pfEnemy, pos, Quaternion.identity, enemiesGroup);
+        enemies[i].enemiesCount++;
     }
 }

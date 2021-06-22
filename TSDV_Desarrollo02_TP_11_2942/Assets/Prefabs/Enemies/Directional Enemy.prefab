@@ -132,11 +132,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69feaff099047ca40ab750a09abe2de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightEdge: 75
-  leftEdge: -75
+  score: 0
   topEdge: 35
   downEdge: -35
-  speed: 20
+  leftEdge: -75
+  rightEdge: 75
+  directionAxis: 0
+  speed: 2.15
   delayBullet: 1
   gun: {fileID: 4812528076699450373}
   anim: {fileID: 210505468}

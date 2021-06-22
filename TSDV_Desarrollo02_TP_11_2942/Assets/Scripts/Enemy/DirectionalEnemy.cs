@@ -1,7 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class DirectionalEnemy : MonoBehaviour, ItakeDamage
 {
+    private LevelGenerator levelGenerator;
+
+    public int score;
+
     [Header("Limits of enemy")]
     public float topEdge;
     public float downEdge;
@@ -40,8 +46,13 @@ public class DirectionalEnemy : MonoBehaviour, ItakeDamage
     Vector3 rightVec;
 
     bool initialDirec;  
-        // false == top or left
-        // true == down or right
+    // false == top or left
+    // true == down or right
+
+    private void Awake()
+    {
+        levelGenerator = FindObjectOfType<LevelGenerator>();
+    }
 
     void Start()
     {
@@ -185,5 +196,6 @@ public class DirectionalEnemy : MonoBehaviour, ItakeDamage
         destroyed = true;
 
         Destroy(gameObject, 1f);
+        levelGenerator.enemies[0].enemiesCount--;
     }
 }
