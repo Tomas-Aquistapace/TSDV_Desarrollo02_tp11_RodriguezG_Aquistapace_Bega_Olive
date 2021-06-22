@@ -32,6 +32,6 @@ public class ShowResult : MonoBehaviour
         enemyKilled = saveData.enemyKilled;
         lapsedTime = saveData.lapsedTime;
         Destroy(saveData.gameObject);
-        text.text = "Score: " + score + "\nEnemies Killed: " + enemyKilled + "\nTime: " + lapsedTime;
+        text.text = "Score: " + score + "\nEnemies Killed: " + enemyKilled + "\nTime: " + lapsedTime.ToString("F2");
     }
 }
