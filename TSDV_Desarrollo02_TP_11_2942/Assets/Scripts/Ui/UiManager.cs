@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using System;
 using TMPro;
@@ -23,6 +24,10 @@ public class UiManager : MonoBehaviour
     int currentMenu = 0;
     [SerializeField] private float durationTransition = 2;
     private float colortime;
+
+    [Header("Load Animation")]
+    public Animator loadAnimator;
+    public float transitionTime = 1f;
 
     private void Start()
     {
@@ -177,11 +182,20 @@ public class UiManager : MonoBehaviour
     
     public void ChangeScene(string nameScene)
     {
-        SceneManager.LoadScene(nameScene);
+        StartCoroutine(LoadLevel(nameScene));
     }
 
     public void QuitApplication()
     {
         Application.Quit();
+    }
+
+    IEnumerator LoadLevel(string nameScene)
+    {
+        loadAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+
+        SceneManager.LoadScene(nameScene);
     }
 }

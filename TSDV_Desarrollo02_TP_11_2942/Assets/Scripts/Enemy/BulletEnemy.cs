@@ -11,7 +11,7 @@ public class BulletEnemy : MonoBehaviour
 
     private void Start()
     {
-        playerPos = GameManager.Get().player.transform.position;
+        playerPos = FindObjectOfType<Player>().transform.position;
         initialPos = transform.position;
 
         direction = playerPos - initialPos;

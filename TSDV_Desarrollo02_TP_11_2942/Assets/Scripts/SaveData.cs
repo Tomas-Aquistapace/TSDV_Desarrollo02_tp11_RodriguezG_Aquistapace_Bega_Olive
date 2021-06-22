@@ -12,6 +12,9 @@ public class SaveData : MonoBehaviour
     public float enemyKilled;
     public float lapsedTime;
 
+    [Header("Load Animation")]
+    public Animator loadAnimator;
+    public float transitionTime = 1f;
 
     private void Awake()
     {
@@ -33,6 +36,16 @@ public class SaveData : MonoBehaviour
         score = levelGenerator.score;
         lapsedTime = levelGenerator.timePlayed;
         enemyKilled = levelGenerator.totalEnemies;
-        SceneManager.LoadScene("GameOver");
+
+        StartCoroutine(LoadLevel("GameOver"));
+    }
+
+    IEnumerator LoadLevel(string nameScene)
+    {
+        loadAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+
+        SceneManager.LoadScene(nameScene);
     }
 }

@@ -154,7 +154,9 @@ public class Player : MonoBehaviour, ItakeDamage, Ikillable
         {
             return false;
         }
+
         OnDie?.Invoke();
+
         return true;
     }
 }
