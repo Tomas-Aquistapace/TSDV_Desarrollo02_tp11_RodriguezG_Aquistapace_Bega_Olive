@@ -2257,6 +2257,9 @@ MonoBehaviour:
   durationTransition: 1
   loadAnimator: {fileID: 1665679000}
   transitionTime: 1
+  panels:
+  - {fileID: 8693697505667271999}
+  - {fileID: 8693697503658755976}
 --- !u!4 &2169520260410148923
 Transform:
   m_ObjectHideFlags: 0

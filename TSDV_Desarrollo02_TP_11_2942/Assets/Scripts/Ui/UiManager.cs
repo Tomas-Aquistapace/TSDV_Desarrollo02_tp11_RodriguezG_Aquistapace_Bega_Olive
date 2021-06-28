@@ -29,9 +29,10 @@ public class UiManager : MonoBehaviour
     public Animator loadAnimator;
     public float transitionTime = 1f;
 
+    public GameObject[] panels;
+
     private void Start()
     {
-        GameObject[] panels = GameObject.FindGameObjectsWithTag("Panels");
 
         for (int i = 0; i < panels.Length; i++)
         {
